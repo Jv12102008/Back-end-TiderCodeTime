@@ -19,15 +19,9 @@ app.use(cors({
 app.use(express.json());
 
 // Conexão com MongoDB Atlas
-mongoose.connect(process.env.mongo_db, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('✅ Conectado ao MongoDB Atlas'))
-.catch((err) => {
-  console.error('❌ Erro ao conectar ao MongoDB:', err);
-  process.exit(1);
-});
+mongoose.connect(process.env.mongo_db)
+  .then(() => console.log("✅ Conectado ao MongoDB Atlas"))
+  .catch(err => console.error("❌ Erro ao conectar:", err));
 
 // Schema do usuário
 const userSchema = new mongoose.Schema({
